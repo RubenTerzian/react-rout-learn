@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+form {
+  display: block;
+}
+
+img {
+  width: 300px;
+  height: auto;
+  object-fit:cover;
+}
+
+label {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  background-image: url('https://icons-for-free.com/iconfiles/png/512/box+document+outline+share+top+upload+icon-1320195323221671611.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label input {
+  display: none;
+}
