@@ -18,16 +18,6 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    toast.success('Bench!~!!',
-        {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            })
     return response.data;
   }, function (error) {
     toast.error(error.response.data,
