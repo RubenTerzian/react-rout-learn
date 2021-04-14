@@ -18,6 +18,15 @@ const storeChangers = {
             isAuth: false,
             data: null,
         }
+    },
+    CHANGE_ROLE: (state, payload) => {
+        return {
+            ...state,
+            data: {
+                ...state.data,
+                role: payload
+            },
+        }
     }
 }
 

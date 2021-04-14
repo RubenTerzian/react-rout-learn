@@ -1,29 +1,25 @@
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
 import './App.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+
+const Auth = React.lazy(() => import('./pages/Auth'));
+const Main = React.lazy(() => import('./pages/Main'));
 
 
 const App = () => {
-  const store = useSelector(store => store);
-
-  console.log(store)
-  if (store.ui.isLoading) return <h1>Loading...</h1>
-
-  if (store.user.isAuth) return (
-    <div>
-      {
-        Object.entries(store.user.data).map(([key, value]) => {
-          return (
-            <div>
-              <h6>{key}: {value.toString()}</h6>
-            </div>
-          )
-        })
-      }
-    </div>
+  const isAuth = useSelector(store => store.user.isAuth);
+  const isLoading = useSelector(store => store.ui.isLoading);
+  const dispatch = useDispatch();
+  if (isLoading) return <h1>Loading...</h1>
+  return (
+    <>
+    <button onClick={() => dispatch({type: 'CHANGE_ROLE', payload: 'USER'})}>Loggout</button>
+    <Suspense fallback={<h1>Processing data...</h1>}>
+      {isAuth ? <Main/> : <Auth/>}
+    </Suspense>
+    </>
   )
-
-  return <h1>Login</h1>
 }
 
 
